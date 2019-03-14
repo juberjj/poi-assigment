@@ -5,15 +5,15 @@ const Schema = Mongoose.Schema;
 const Boom = require('boom');
 
 const poiSchema = new Schema({
-  poitype: String,
-  method: String,
-  poiname: String,
+  poi: String,
+  name: String,
   rating: Number,
   description: String,
   long: Number,
   lat: Number,
+  image64: String,
   updated: { type: Date, default: Date.now },
-  donor: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

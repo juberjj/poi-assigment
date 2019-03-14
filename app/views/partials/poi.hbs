@@ -5,7 +5,7 @@
         <h4 class="ui dividing header">Select Point of Interest</h4>
         
 
-        <form action="/donate" method="POST">
+        <form action="/addpoi" method="POST">
 
           <div class="ui equal width form">
             <div class="fields">
@@ -45,38 +45,41 @@
 
          <div class="field">
            <label>Name</label>
-           <input type="text" placeholder="Amenity Name">
+           <input type="text" name="name" placeholder="Amenity Name">
          </div>
 
          <div class="field">
           <label>Rating</label>
-          <div class="ui star rating" data-rating="0"></div>
+          <div class="ui star rating" data-rating="0">
+         </div>
+          <input type="hidden" id="rating" name="rating" value="0">
         </div>
 
-         <div class="ui action inputfile">
-           <input type="file" class="inputfile">
-           <label for="file">choose</label>
-         </div>
 
         <div class="field">
           <label>Description</label>
-          <textarea></textarea>
+          <textarea name="description"></textarea>
         </div>
 
         <div class="two fields">
          <div class="field">
            <label>longitude</label>
-           <input type="text" placeholder="00.00">
+           <input type="text" name="long" placeholder="00.00">
          </div>
          <div class="field">
            <label>latitude</label>
-           <input type="text" placeholder="00.00">
+           <input type="text" name="lat" placeholder="00.00">
          </div>
          
        </div>
+         <div class="field">
+          <input type="file" class="inputfile" onchange="readfile()">
 
+         {{!-- <input type="file" class="inputfile" name="filename"> --}}
+         </div>
+          <input type="hidden" id="file-text" name="filename">
 
-       <button class="ui blue submit button">Submit</button>
+        <button class="ui blue submit button">Submit</button>
      </form>
    </div>
  </div>
@@ -90,7 +93,35 @@
 
 <script>
 $('.ui.rating')
-.rating()
-;  
+.rating({
+  onRate: function(rating){
+
+console.log(rating)
+  document.getElementById("rating").value = rating;
+  }
+
+});
+
+
+function readfile(){
+
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader = new FileReader()
+
+  reader.addEventListener("load", function () {
+    var src = reader.result;
+    //var src = src.replace("data:application/octet-stream;base64,", "")
+    //console.log(src)
+    document.getElementById("file-text").value = src;
+  }, false);
+
+
+
+    if (file) {
+    reader.readAsDataURL(file);
+  }
+
+}
+
 
 </script>

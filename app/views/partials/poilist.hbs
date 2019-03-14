@@ -7,17 +7,19 @@
       <table class="ui celled table segment">
         <thead>
           <tr>
-            <th>Amount</th>
-            <th>Method donated</th>
-            <th>User</th>
+            <th>Point Of Interest</th>
+            <th>Name</th>
+            <th>Sent by</th>
+            <th>Thumbnail</th>
           </tr>
         </thead>
-        <tbody>
-          {{#each donations}}
+        <tbody >
+          {{#each pois}}
             <tr>
-              <td> {{amount}} </td>
-              <td> {{method}} </td>
-              <td> {{donor.firstName}} {{donor.lastName}}</td>
+              <td> {{poi}} </td>
+              <td> {{name}} </td>
+              <td> {{user.firstName}} {{user.lastName}}</td>
+              <td> <img src="{{image64}}" height="50" onload="readfile()" alt="Image preview..."> </td>
             </tr>
           {{/each}}
         </tbody>
@@ -25,3 +27,4 @@
     </article>
   </div>
 </section>
+
