@@ -4,86 +4,93 @@
       <div class="ui stacked segment">
         <h4 class="ui dividing header">Select Point of Interest</h4>
         
-              
+
         <form action="/donate" method="POST">
 
           <div class="ui equal width form">
             <div class="fields">
-                <div class="field">
-                  <i class="blue circular large coffee link icon"></i>
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="poi" value="coffee">
-                    <label>Coffee Shop</label>
-                  </div>
+              <div class="field">
+                <i class="blue circular large coffee link icon"></i>
+                <div class="ui radio checkbox">
+                  <input type="radio" name="poi" value="coffee">
+                  <label>Coffee Shop</label>
                 </div>
-                <div class="field">
-                  <i class="green circular large film icon"></i>
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="poi"  value ="movies">
-                    <label>Movies</label>
-                  </div>
+              </div>
+              <div class="field">
+                <i class="green circular large film icon"></i>
+                <div class="ui radio checkbox">
+                  <input type="radio" name="poi"  value ="movies">
+                  <label>Movies</label>
                 </div>
+              </div>
 
-                <div class="field">
-                  <i class="brown circular large bed icon"></i>
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="poi" value="hotels">
-                    <label>Hotels</label>
-                  </div>
+              <div class="field">
+                <i class="brown circular large bed icon"></i>
+                <div class="ui radio checkbox">
+                  <input type="radio" name="poi" value="hotels">
+                  <label>Hotels</label>
                 </div>
+              </div>
 
-                <div class="field">
-                  <i class="red circular large utensils icon"></i>
-                  <div class="ui radio checkbox">
-                     <input type="radio" name="poi" value="restaurants">
-                    <label>Restaurants</label>
-                  </div> 
-                </div>
+              <div class="field">
+                <i class="red circular large utensils icon"></i>
+                <div class="ui radio checkbox">
+                 <input type="radio" name="poi" value="restaurants">
+                 <label>Restaurants</label>
+               </div> 
+             </div>
 
-            </div>
-            </div>
-            
-          <div class="field">
-             <label>Name</label>
-             <input type="text" placeholder="Amenity Name">
-          </div>
-          
-          <div class="field">
-            <label>Rating</label>
-            <div class="ui star rating" data-rating="0"></div>
-          </div>
+           </div>
+         </div>
+
+         <div class="field">
+           <label>Name</label>
+           <input type="text" placeholder="Amenity Name">
+         </div>
+
+         <div class="field">
+          <label>Rating</label>
+          <div class="ui star rating" data-rating="0"></div>
+        </div>
+
+         <div class="ui action inputfile">
+           <input type="file" class="inputfile">
+           <label for="file">choose</label>
+         </div>
+
+        <div class="field">
+          <label>Description</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="two fields">
+         <div class="field">
+           <label>longitude</label>
+           <input type="text" placeholder="00.00">
+         </div>
+         <div class="field">
+           <label>latitude</label>
+           <input type="text" placeholder="00.00">
+         </div>
          
+       </div>
 
-          <div class="field">
-            <label>Description</label>
-            <textarea></textarea>
-          </div>
-          <div class="two fields">
-           <div class="field">
-             <label>longitude</label>
-             <input type="text" placeholder="00.00">
-          </div>
-           <div class="field">
-             <label>latitude</label>
-             <input type="text" placeholder="00.00">
-          </div>
-        </div>
 
-          <button class="ui blue submit button">Submit</button>
-        </form>
-      </div>
-    </div>
+       <button class="ui blue submit button">Submit</button>
+     </form>
+   </div>
+ </div>
 
-    <aside class="ui eight wide column">
-          <img class= "ui right floated large image" src="images/map.png">
-        </div>
-    </aside>
-  </div>
+ <aside class="ui eight wide column">
+  <img class= "ui right floated large image" src="images/map.png">
+</div>
+</aside>
+</div>
 </section>
 
 <script>
 $('.ui.rating')
-  .rating()
+.rating()
 ;  
 
 </script>
