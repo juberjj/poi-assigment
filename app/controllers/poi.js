@@ -72,7 +72,7 @@ const Pois = {
         title: 'Point Of Interests coffee',
         pois: poisb.filter(function(item){
          return item.poi==cat
-      });
+      })
 
       });
       
