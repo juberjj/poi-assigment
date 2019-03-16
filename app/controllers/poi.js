@@ -15,15 +15,15 @@ const Pois = {
     handler: async function(request, h) {
       const pois = await Poi.find().populate('user');
 
-      /*const data =  pois.filter(function(item){
-         return item.poi=="coffee"
+      const poismovie =  pois.filter(function(item){
+         return item.poi=="Movies"
       });
-      var compiled = Handlebars.precompile(data);
-      */
+      
      
       return h.view('report', {
         title: 'Point Of Interests',
-        pois: pois
+        pois: pois,
+        poismovie:poismovie
         //pois: encodeURIComponent(JSON.stringify(pois))
       });
     }
@@ -39,7 +39,6 @@ const Pois = {
       const pois =  poiss.filter(function(item){
          return item.poi=="coffee"
       });
-      var compiled = Handlebars.precompile(pois);
 
       return h.view('report', {
         title: 'Point Of Interests coffee',
@@ -50,18 +49,31 @@ const Pois = {
   },
   updateview: {
     handler: async function(request, h) {
-      /*const poiss = await Poi.find().populate('user');
-      const poiscat = await Poi.find().populate('');*/
+
+      console.log('updateview route')
+      console.log(request.payload.cat)
+      const cat = request.payload.cat
+
+      const poisb = await Poi.find().populate('user');
+
+      //const poiscat = await Poi.find().populate('');*/
       const item = request.params
 
       console.log('updateview route')
-      console.log(item)
-      const pois =  poiss.filter(function(item){
-         return item.poi=="coffee"
-      });
-      return h.view('report', {
+      
+      /*const poisc =  poisb.filter(function(item){
+         return item.poi==cat
+      });*/
+
+      console.log(pois.length)
+
+      //return h.redirect('/report')
+      return h.view('reportview', {
         title: 'Point Of Interests coffee',
-        pois: pois
+        pois: poisb.filter(function(item){
+         return item.poi==cat
+      });
+
       });
       
     }

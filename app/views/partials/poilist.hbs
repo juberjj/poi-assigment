@@ -1,3 +1,43 @@
+    <section class="ui raised segment stackable four column grid">
+       <div class="column center aligned">
+      <h2 class="ui icon header">
+            <i class="blue circular large coffee icon"></i>
+            <div class="ui checkbox">
+                <input type="checkbox" class="checks" name="Coffee Shop" value="Coffee Shop" onclick="getvalue()">
+                <label>Coffee Shop</label>
+            </div>
+        </h2>
+    </div>
+    <div class="column center aligned">
+        <h2 class="ui icon header">
+          <i class="green circular large film icon" id="movies"></i>
+          <div class="ui checkbox">
+                <input type="checkbox" class="checks" value="Movies" name="Movies" onclick="getvalue()">
+                <label>Movies</label>
+            </div>
+        </h2>
+    </div>
+    <div class="column center aligned">
+      <h2 class="ui icon header">
+           <i class="brown circular large bed icon"></i>
+           <div class="ui checkbox">
+                <input type="checkbox" class="checks" value="Hotels" name="Hotels" onclick="getvalue()">
+                <label>Hotels</label>
+            </div>
+      </h2>
+    </div>
+    <div class="column center aligned">
+        <h2 class="ui icon header">
+           <i class="red circular large utensils icon"></i>
+           <div class="ui checkbox">
+               <input type="checkbox" class="checks" value="Retaurants" name="Restaurants" onclick="getvalue()">
+               <label>Restaurants</label>
+           </div>
+        </h2>
+    </div>
+</section>  
+
+
 <section class="ui raised segment">
   <div class="ui grid">
       <table class="ui celled table segment">
@@ -12,7 +52,7 @@
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody id="table">
           {{#each pois}}
             <tr>
               <td> {{poi}} </td>
@@ -30,3 +70,58 @@
   </div>
 </section>
  
+ <script>
+
+function getvalue(){
+
+var checks = document.getElementsByClassName("checks")
+
+for(i=0; i<4;i++){
+
+    if(checks[i].checked===true){
+
+        if(checks[i].value === 'Movies'){
+          //window.location.href = '/reportview';
+          console.log(checks[i].value);
+        $.post('/reportview', {cat:'Movies'}, function(data){
+          //$('#table').load('#table')
+
+        });
+          
+         
+        }
+
+
+       /* if(checks[i].value === 'Coffee Shop'){
+          window.location.href = '/reportview';
+          console.log(checks[i].value)
+          
+        }*/
+      //$('#table').load(location.href + "/reportview" + '#table')
+      //  alert(data)
+      //})*/
+
+        //var template = Handlebars.compile(checks[i].value);
+       
+    }
+
+}
+}
+
+/*var checkbox = document.querySelector("input[name=coffee]");
+
+const filtered = 
+
+checkbox.addEventListener( 'change', function(name) {
+    if(this.checked) {
+        // Checkbox is checked..
+        console.log(name)
+        return name
+        fetch('/reportview')
+    } else {
+        console.log(name)
+        // Checkbox is not checked..
+    }
+});*/
+</script>
+
