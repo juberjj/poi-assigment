@@ -20,4 +20,4 @@ const poiSchema = new Schema({
 
 })
 
-module.exports = Mongoose.model('poi', poiSchema);
+module.exports = Mongoose.model('Poi', poiSchema);

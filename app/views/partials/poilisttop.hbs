@@ -1,0 +1,81 @@
+<!-- <section class="ui raised segment five column stackable grid"> -->
+<section class="ui raised segment stackable four column grid">
+    <div class="column center aligned">
+        <form action="/reportview" method='POST'>
+        <h2 class="ui icon header">
+            <i class="blue circular large coffee icon"></i>
+            <div class="ui checkbox">
+                <input type="checkbox" class="checks" name="coffee" value="coffee" onclick="getvalue()">
+                <label>Coffee Shop</label>
+            </div>
+        </h2>
+    </div>
+    <div class="column center aligned">
+        <h2 class="ui icon header">
+          <i class="green circular large film icon" id="movies"></i>
+          <div class="ui checkbox">
+                <input type="checkbox" class="checks" value="movies" name="movies" onclick="getvalue()">
+                <label>Movies</label>
+            </div>
+        </h2>
+    </div>
+    <div class="column center aligned">
+      <h2 class="ui icon header">
+           <i class="brown circular large bed icon"></i>
+           <div class="ui checkbox">
+                <input type="checkbox" class="checks" value="hotels" name="hotels" onclick="getvalue()">
+                <label>Hotels</label>
+            </div>
+      </h2>
+    </div>
+    <div class="column center aligned">
+        <h2 class="ui icon header">
+           <i class="red circular large utensils icon"></i>
+           <div class="ui checkbox">
+               <input type="checkbox" class="checks" value="retaurants" name="restaurants" onclick="getvalue()">
+               <label>Restaurants</label>
+           </div>
+        </h2>
+    </div>
+    </form>
+</section>
+
+<script>
+
+function getvalue(){
+
+var checks = document.getElementsByClassName("checks")
+//console.log(checks)
+
+for(i=0; i<4;i++){
+
+    if(checks[i].checked===true){
+
+        console.log(checks[i].value)
+        var template = Handlebars.compile(checks[i].value);
+        console.log(template)
+    }
+
+}
+
+
+
+
+}
+
+/*var checkbox = document.querySelector("input[name=coffee]");
+
+const filtered = 
+
+checkbox.addEventListener( 'change', function(name) {
+    if(this.checked) {
+        // Checkbox is checked..
+        console.log(name)
+        return name
+        fetch('/reportview')
+    } else {
+        console.log(name)
+        // Checkbox is not checked..
+    }
+});*/
+</script>

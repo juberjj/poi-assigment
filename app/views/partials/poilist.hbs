@@ -1,16 +1,15 @@
 <section class="ui raised segment">
   <div class="ui grid">
-    <aside class="six wide column">
-      <img src="images/homer5.jpg" class="ui medium image">
-    </aside>
-    <article class="eight wide column">
       <table class="ui celled table segment">
         <thead>
           <tr>
-            <th>Point Of Interest</th>
+            <th>Poi Category</th>
             <th>Name</th>
             <th>Sent by</th>
             <th>Thumbnail</th>
+            <th>View POI</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody >
@@ -19,12 +18,15 @@
               <td> {{poi}} </td>
               <td> {{name}} </td>
               <td> {{user.firstName}} {{user.lastName}}</td>
-              <td> <img src="{{image64}}" height="50" onload="readfile()" alt="Image preview..."> </td>
+              <td> <img src="{{image64}}" height="50"  alt="Image preview..."> </td>
+              <td> <a href="/poi/viewpoi/{{_id}}"><i class="eye icon"></i></a></td>
+              <td> <a href="/poi/showupdatepoi/{{_id}}"> <i class="edit outline icon"></i> </a></td>
+              <td> <a href="/poi/delpoi/{{_id}}"> <i class="trash red alternate outline icon"></i> </a> </td>
+
             </tr>
           {{/each}}
         </tbody>
       </table>
-    </article>
   </div>
 </section>
-
+ 

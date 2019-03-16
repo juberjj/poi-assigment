@@ -12,14 +12,14 @@
               <div class="field">
                 <i class="blue circular large coffee link icon"></i>
                 <div class="ui radio checkbox">
-                  <input type="radio" name="poi" value="coffee">
+                  <input type="radio" name="poi" value="Coffee Shop">
                   <label>Coffee Shop</label>
                 </div>
               </div>
               <div class="field">
                 <i class="green circular large film icon"></i>
                 <div class="ui radio checkbox">
-                  <input type="radio" name="poi"  value ="movies">
+                  <input type="radio" name="poi"  value ="Movies">
                   <label>Movies</label>
                 </div>
               </div>
@@ -27,7 +27,7 @@
               <div class="field">
                 <i class="brown circular large bed icon"></i>
                 <div class="ui radio checkbox">
-                  <input type="radio" name="poi" value="hotels">
+                  <input type="radio" name="poi" value="Hotels">
                   <label>Hotels</label>
                 </div>
               </div>
@@ -35,7 +35,7 @@
               <div class="field">
                 <i class="red circular large utensils icon"></i>
                 <div class="ui radio checkbox">
-                 <input type="radio" name="poi" value="restaurants">
+                 <input type="radio" name="poi" value="Restaurants">
                  <label>Restaurants</label>
                </div> 
              </div>
@@ -102,9 +102,7 @@ console.log(rating)
 
 });
 
-
 function readfile(){
-
   var file    = document.querySelector('input[type=file]').files[0];
   var reader = new FileReader()
 
@@ -115,13 +113,9 @@ function readfile(){
     document.getElementById("file-text").value = src;
   }, false);
 
-
-
     if (file) {
     reader.readAsDataURL(file);
   }
-
 }
-
 
 </script>

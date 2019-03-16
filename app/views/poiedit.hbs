@@ -1,0 +1,88 @@
+{{> mainmenu _id="updatepoi" }}
+
+<section class="ui raised segment">
+  <div class="ui grid ">
+    <div class="ui form eight wide column">
+      <div class="ui stacked segment">
+        <h4 class="ui dividing header">Update Point of Interest</h4>
+       
+        <form action="/poi/showupdatepoi/{{id._id}}" method="POST">
+              
+          <div class="field">
+           <label>Category</label>
+           <input value={{poi.poi}} type="text" name="poi">
+         </div>
+
+         <div class="field">
+           <label>Name</label>
+           <input value={{poi.name}} type="text" name="name">
+         </div>
+
+         <div class="field">
+          <label>Rating</label>
+          <div class="ui star rating" data-rating={{poi.rating}} value={{poi.rating}}>
+         </div>
+          <input type="hidden" id="rating" name="rating" value={{poi.rating}}>
+        </div>
+
+
+        <div class="field">
+          <label>Description</label>
+          <textarea name="description">{{poi.description}}</textarea>
+        </div>
+
+        <div class="two fields">
+         <div class="field">
+           <label>longitude</label>
+           <input value={{poi.long}} type="text" name="long">
+         </div>
+         <div class="field">
+           <label>latitude</label>
+           <input value={{poi.lat}} type="text" name="lat">
+         </div>
+       </div>
+         <div class="field">
+          <input type="file" class="inputfile" onchange="readfile()">
+         </div>
+          <input type="hidden" id="file-text" name="filename">
+
+        <button class="ui blue submit button">Update</button>
+     </form>
+   </div>
+ </div>
+
+ <aside class="ui eight wide column">
+  <img class= "ui right floated large image" src={{poi.image64}}>
+</div>
+</aside>
+</div>
+</section>
+
+<script>
+$('.ui.rating')
+.rating({
+  onRate: function(rating){
+
+console.log(rating)
+  document.getElementById("rating").value = rating;
+  }
+
+});
+
+function readfile(){
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader = new FileReader()
+
+  reader.addEventListener("load", function () {
+    var src = reader.result;
+    //var src = src.replace("data:application/octet-stream;base64,", "")
+    //console.log(src)
+    document.getElementById("file-text").value = src;
+  }, false);
+
+    if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
+</script>
