@@ -10,16 +10,6 @@ const server = Hapi.server({
 });
 
 
-// debug .env file
-/*const result = dotenv.config();
-if (result.error) {
-  console.log(result.error.message);
-  process.exit(1);
-}*/
-// server.bind({
-//   donations: [],
-//   users:[],
-// });
 
 async function init(){
 	await server.register(require('inert'));
