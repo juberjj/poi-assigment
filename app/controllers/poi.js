@@ -13,17 +13,26 @@ const Pois = {
   },
   report: {
     handler: async function(request, h) {
-      const pois = await Poi.find().populate('user');
+      var pois = await Poi.find().populate('user');
 
-      const poismovie =  pois.filter(function(item){
+      const cat = request.query.cat
+      console.log("report route  " + cat)
+
+      if(cat!==undefined){
+        console.log("true")
+         pois =  pois.filter(function(item){
          return item.poi=="Movies"
       });
       
+
+      }
+     
+     console.log(pois.length)
      
       return h.view('report', {
         title: 'Point Of Interests',
-        pois: pois,
-        poismovie:poismovie
+        pois: pois
+      
         //pois: encodeURIComponent(JSON.stringify(pois))
       });
     }
@@ -51,30 +60,29 @@ const Pois = {
     handler: async function(request, h) {
 
       console.log('updateview route')
-      console.log(request.payload.cat)
-      const cat = request.payload.cat
+      //const cat = request.payload.cat
+      const cat = request.query.cat
+      console.log(cat)
 
-      const poisb = await Poi.find().populate('user');
+
+      const pois = await Poi.find().populate('user');
 
       //const poiscat = await Poi.find().populate('');*/
-      const item = request.params
+      //const item = request.query.cat
 
-      console.log('updateview route')
       
-      /*const poisc =  poisb.filter(function(item){
+      const poisc =  pois.filter(function(item){
          return item.poi==cat
-      });*/
+      });
 
-      console.log(pois.length)
+     // console.log(h.response().request.raw)
 
       //return h.redirect('/report')
-      return h.view('reportview', {
+      
+      return h.view('report', {
         title: 'Point Of Interests coffee',
-        pois: poisb.filter(function(item){
-         return item.poi==cat
-      })
-
-      });
+        pois: poisc
+     });
       
     }
   },
@@ -163,7 +171,7 @@ const Pois = {
                 const id = request.params._id;
                 const poi = await Poi.findById(id);
                 //Log the id to ensure the right poi is being called
-                console.log(poi.name);
+                //console.log(request._route.public);
                 return h.view('poiview', {
                     title: 'View Point of Interest',
                     poi: poi

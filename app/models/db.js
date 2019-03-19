@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const Mongoose = require('mongoose');
 
-Mongoose.connect(process.env.db);
+Mongoose.connect(process.env.db, { useNewUrlParser: true,  useFindAndModify: false });
 const db = Mongoose.connection;
 
 db.on('error', function(err) {

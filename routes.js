@@ -17,7 +17,7 @@ module.exports = [
 { method: 'GET', path: '/report', config: Pois.report },
 { method: 'POST', path: '/addpoi', config: Pois.addpoi },
 
-{ method: 'POST', path: '/reportview', config: Pois.updateview },
+{ method: 'GET', path: '/reportb{cat?}', config: Pois.updateview },
 //{ method: 'GET', path: '/reportview', config: Pois.listcoffee },
 
 { method: 'GET', path: '/poi/delpoi/{id}', config: Pois.delpoi },

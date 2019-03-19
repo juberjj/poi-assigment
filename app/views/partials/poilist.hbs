@@ -1,96 +1,116 @@
     <section class="ui raised segment stackable four column grid">
-       <div class="column center aligned">
+     <div class="column center aligned">
       <h2 class="ui icon header">
-            <i class="blue circular large coffee icon"></i>
-            <div class="ui checkbox">
-                <input type="checkbox" class="checks" name="Coffee Shop" value="Coffee Shop" onclick="getvalue()">
-                <label>Coffee Shop</label>
-            </div>
-        </h2>
-    </div>
-    <div class="column center aligned">
-        <h2 class="ui icon header">
-          <i class="green circular large film icon" id="movies"></i>
-          <div class="ui checkbox">
-                <input type="checkbox" class="checks" value="Movies" name="Movies" onclick="getvalue()">
-                <label>Movies</label>
-            </div>
-        </h2>
-    </div>
-    <div class="column center aligned">
-      <h2 class="ui icon header">
-           <i class="brown circular large bed icon"></i>
-           <div class="ui checkbox">
-                <input type="checkbox" class="checks" value="Hotels" name="Hotels" onclick="getvalue()">
-                <label>Hotels</label>
-            </div>
+        <i class="blue circular large coffee icon"></i>
+        <div class="ui checkbox">
+          <input type="checkbox" class="checks" name="Coffee Shop" value="Coffee Shop" onclick="getvalue()" >
+          <label>Coffee Shop</label>
+        </div>
       </h2>
     </div>
     <div class="column center aligned">
-        <h2 class="ui icon header">
-           <i class="red circular large utensils icon"></i>
-           <div class="ui checkbox">
-               <input type="checkbox" class="checks" value="Retaurants" name="Restaurants" onclick="getvalue()">
-               <label>Restaurants</label>
-           </div>
-        </h2>
+      <h2 class="ui icon header">
+        <i class="green circular large film icon" id="movies"></i>
+        <div class="ui checkbox">
+          <input type="checkbox" class="checks" value="Movies" name="Movies" onclick="getvalue()">
+          <label>Movies</label>
+        </div>
+      </h2>
     </div>
+    <div class="column center aligned">
+      <h2 class="ui icon header">
+       <i class="brown circular large bed icon"></i>
+       <div class="ui checkbox">
+        <input type="checkbox" class="checks" value="Hotels" name="Hotels" onclick="getvalue()">
+        <label>Hotels</label>
+      </div>
+    </h2>
+  </div>
+  <div class="column center aligned">
+    <h2 class="ui icon header">
+     <i class="red circular large utensils icon"></i>
+     <form action="reportb">
+       <div class="ui checkbox">
+       <input type="checkbox" class="checks" value="Restaurants" name="Restaurants" onclick="getvalue()">
+       <label>Restaurants</label>
+     </form>
+     </div>
+   </h2>
+ </div>
 </section>  
 
 
 <section class="ui raised segment">
   <div class="ui grid">
-      <table class="ui celled table segment">
-        <thead>
-          <tr>
-            <th>Poi Category</th>
-            <th>Name</th>
-            <th>Sent by</th>
-            <th>Thumbnail</th>
-            <th>View POI</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody id="table">
-          {{#each pois}}
-            <tr>
-              <td> {{poi}} </td>
-              <td> {{name}} </td>
-              <td> {{user.firstName}} {{user.lastName}}</td>
-              <td> <img src="{{image64}}" height="50"  alt="Image preview..."> </td>
-              <td> <a href="/poi/viewpoi/{{_id}}"><i class="eye icon"></i></a></td>
-              <td> <a href="/poi/showupdatepoi/{{_id}}"> <i class="edit outline icon"></i> </a></td>
-              <td> <a href="/poi/delpoi/{{_id}}"> <i class="trash red alternate outline icon"></i> </a> </td>
+    <table class="ui celled table segment" id="table">
+      <thead>
+        <tr>
+          <th>Poi Category</th>
+          <th>Name</th>
+          <th>Sent by</th>
+          <th>Thumbnail</th>
+          <th>View POI</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pois}}
+        <tr>
+          <td> {{poi}} </td>
+          <td> {{name}} </td>
+          <td> {{user.firstName}} {{user.lastName}}</td>
+          <td> <img src="{{image64}}" height="50"  alt="Image preview..."> </td>
+          <td> <a href="/poi/viewpoi/{{_id}}"><i class="eye icon"></i></a></td>
+          <td> <a href="/poi/showupdatepoi/{{_id}}"> <i class="edit outline icon"></i> </a></td>
+          <td> <a href="/poi/delpoi/{{_id}}"> <i class="trash red alternate outline icon"></i> </a> </td>
 
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </section>
- 
- <script>
+
+<script>
 
 function getvalue(){
 
-var checks = document.getElementsByClassName("checks")
+  var checks = document.getElementsByClassName("checks")
 
-for(i=0; i<4;i++){
+  for(i=0; i<4;i++){
 
     if(checks[i].checked===true){
 
-        if(checks[i].value === 'Movies'){
-          //window.location.href = '/reportview';
+      if(checks[i].value === 'Movies'){
+          window.location.href = '/reportb?' + 'cat=Movies';
           console.log(checks[i].value);
-        $.post('/reportview', {cat:'Movies'}, function(data){
-          //$('#table').load('#table')
 
-        });
-          
-         
-        }
 
+      }
+      if(checks[i].value === 'Hotels'){
+          window.location.href = '/reportb?' +'cat=Hotels'
+          console.log(checks[i].value);
+
+
+      }
+      if(checks[i].value === 'Coffee Shop'){
+          window.location.href = '/reportb?' +'cat=Coffee Shop'
+          console.log(checks[i].value);
+
+
+      }
+      if(checks[i].value === 'Restaurants'){
+          window.location.href = '/reportb?' +'cat=Restaurants'
+          console.log(checks[i].value);
+
+
+      }
+
+      }
+
+    }
+  }
 
        /* if(checks[i].value === 'Coffee Shop'){
           window.location.href = '/reportview';
@@ -102,11 +122,21 @@ for(i=0; i<4;i++){
       //})*/
 
         //var template = Handlebars.compile(checks[i].value);
-       
-    }
 
-}
-}
+          //var poisa=encodeURIComponent(JSON.stringify(jsonData))
+/*         
+        $.post('/report', {cat:'Movies'}, function(data){
+          return
+
+        });
+        */
+
+        /*$.get(window.location.href = '/reportb', {cat:'Movies'}).done(function(data){
+           //window.location.href = '/reportb'
+         })
+*/
+
+        //$('#result').load(window.location.href + '/reportview')
 
 /*var checkbox = document.querySelector("input[name=coffee]");
 
@@ -122,6 +152,6 @@ checkbox.addEventListener( 'change', function(name) {
         console.log(name)
         // Checkbox is not checked..
     }
-});*/
-</script>
+  });*/
+  </script>
 
