@@ -21,3 +21,5 @@ $ node index
 
 ## App Deployed 
  ### https://salty-harbor-30475.herokuapp.com/
+
+ ### https://juber-poi.glitch.me/
